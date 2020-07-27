@@ -17,7 +17,10 @@ RUN apt-get -y install libreoffice-writer
 
 RUN apt-get -y install poppler-utils
 
-RUN pip install -r requirements.txt --src /usr/local/src
+RUN pip install --src /usr/local/src flask flask_cors flask_script gevent wget boto3
+RUN pip install --src /usr/local/src opencv-python pytesseract
+RUN pip install --src /usr/local/src numpy scipy spacy
+RUN pip install --src /usr/local/src  pdf2image reportlab  openpyxl pdfquery pdftotext python-docx xlsxwriter datefinder PyPDF2 camelot-py[cv]==0.8.0
 
 CMD ["/bin/bash"]
 
