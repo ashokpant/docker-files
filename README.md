@@ -1,7 +1,7 @@
 # docker-files
 Docker base images
 
-## python-3.8-ml [dockerhub](https://hub.docker.com/r/ashokpant/python-3.8-ml)
+## python-3.8-ml [dockerhub](https://hub.docker.com/r/ashokpant/python-ml-3.8)
 
 * flask flask_cors flask_script gevent wget boto3
 * numpy scipy spacy
