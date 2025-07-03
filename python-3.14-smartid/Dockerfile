@@ -1,4 +1,4 @@
-FROM python:3.14-slim
+FROM python:3.12-slim
 LABEL maintainer = "ashok@treeleaf.ai"
 LABEL version="1.0.0"
 LABEL vendor="Ashok"
