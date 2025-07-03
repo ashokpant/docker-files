@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y \
     git \
     && rm -rf /var/lib/apt/lists/*
 WORKDIR /base
+RUN pip install --upgrade pip setuptools
 COPY requirements.txt /base/
 RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 8000
