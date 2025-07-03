@@ -3,7 +3,13 @@ LABEL maintainer = "ashok@treeleaf.ai"
 LABEL version="1.0.0"
 LABEL vendor="Ashok"
 
-RUN apt-get update && apt-get install -y curl vim git && apt-get clean
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    cmake \
+    curl \
+    vim \
+    git \
+    && rm -rf /var/lib/apt/lists/*
 WORKDIR /base
 COPY requirements.txt /base/
 RUN pip install --no-cache-dir -r requirements.txt
