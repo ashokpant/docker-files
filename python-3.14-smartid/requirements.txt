@@ -1,0 +1,15 @@
+fastapi==0.115.0
+uvicorn==0.30.6
+pytesseract==0.3.13
+pillow==10.4.0
+opencv-python==4.11.0.86
+transformers==4.53.0
+qwen-vl-utils==0.0.4
+requests==2.32.3
+llama-cpp-python==0.3.10
+python-multipart==0.0.20
+torchvision==0.22.1
+accelerate==1.7.0
+supervision
+ultralytics
+dlib
