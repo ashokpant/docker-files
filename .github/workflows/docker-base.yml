@@ -29,4 +29,5 @@ jobs:
         with:
           context: ./${{ matrix.folder }}
           push: true
+          platforms: linux/amd64,linux/arm64
           tags: ${{ matrix.image }}:latest
