@@ -13,3 +13,5 @@ accelerate==1.7.0
 supervision
 ultralytics
 dlib
+scikit-image
+python-dotenv
