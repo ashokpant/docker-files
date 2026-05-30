@@ -2,11 +2,7 @@
 
 FROM python:3.13-slim
 
-LABEL maintainer="ashok@treeleaf.ai"
-LABEL version="1.0.0"
-LABEL vendor="Ashok"
-
-WORKDIR /base
+WORKDIR /app
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     git ca-certificates \
@@ -19,12 +15,15 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
 
 ENV VIRTUAL_ENV=/opt/venv
-RUN uv venv $VIRTUAL_ENV
-
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
-
-RUN uv pip install --upgrade pip setuptools wheel
-
-# default env flags
 ENV PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1
+
+RUN uv venv $VIRTUAL_ENV
+
+COPY pyproject.toml uv.lock ./
+
+RUN --mount=type=cache,target=/root/.cache/uv \
+    uv sync --frozen --no-dev
+
+COPY . /app

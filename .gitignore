@@ -13,3 +13,8 @@
 *.sqlite3
 *.egg-info
 *.egg
+*.venv
+__pycache__/
+dist/
+build/
+*.egg-info/
