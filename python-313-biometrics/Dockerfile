@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1.7
 
-FROM python:3.13-slim-bookworm
+FROM python:3.13-slim-trixie
 
 LABEL maintainer="ashok@treeleaf.ai"
 
@@ -30,24 +30,24 @@ COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
 
 RUN uv venv "${VIRTUAL_ENV}" \
     && uv pip install --python "${VIRTUAL_ENV}/bin/python" \
-       --upgrade pip setuptools wheel
+    --upgrade pip setuptools wheel
 
 RUN --mount=type=cache,target=/root/.cache/uv \
     uv pip install --python "${VIRTUAL_ENV}/bin/python" \
-        appdirs>=1.4.4 \
-        numpy>=2.2.0 \
-        numba>=0.65.0 \
-        opencv-python-headless>=4.11.0 \
-        onnxruntime>=1.21.0 \
-        python-multipart>=0.0.29 \
-        pydantic>=2.13.4 \
-        fastapi \
-        uvicorn \
-        pytz>=2026.2 \
-        requests \
-        grpclib>=0.4.9 \
-        protobuf>=6.31.1 \
-        anyio>=4.13.0 \
-        betterproto2[grpclib]>=0.10.0
+    appdirs>=1.4.4 \
+    numpy>=2.2.0 \
+    numba>=0.65.0 \
+    opencv-python-headless>=4.11.0 \
+    onnxruntime>=1.21.0 \
+    python-multipart>=0.0.29 \
+    pydantic>=2.13.4 \
+    fastapi \
+    uvicorn \
+    pytz>=2026.2 \
+    requests \
+    grpclib>=0.4.9 \
+    protobuf>=6.31.1 \
+    anyio>=4.13.0 \
+    betterproto2[grpclib]>=0.10.0
 
 WORKDIR /app
