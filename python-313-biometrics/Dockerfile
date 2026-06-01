@@ -1,6 +1,4 @@
 # syntax=docker/dockerfile:1.7
-#   docker build -t ashokpant/python-313-biometrics:latest .
-#   docker push ashokpant/python-313-biometrics:latest
 
 FROM python:3.13-slim-trixie
 

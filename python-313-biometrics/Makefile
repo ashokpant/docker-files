@@ -1,14 +1,14 @@
 IMAGE ?= ashokpant/python-313-biometrics:latest
-BIOMETRICS_PROCESSOR ?= ../../../treeleaf/biometrics-processor
+PLATFORMS ?= linux/amd64,linux/arm64
 
-.PHONY: build push export-requirements
+.PHONY: setup-buildx export-requirements build-local build-multi push build push-amd64-local
 
-export-requirements:
-	$(MAKE) -C "$(BIOMETRICS_PROCESSOR)" export-public-requirements
-	cp "$(BIOMETRICS_PROCESSOR)/requirements-public.txt" ./requirements.txt
+.PHONY:build-multi
+build-multi:
+	DOCKER_BUILDKIT=1 docker buildx build --platform $(PLATFORMS) -t $(IMAGE) .
 
-build:
-	DOCKER_BUILDKIT=1 docker build -t $(IMAGE) .
+.PHONY: build
+build: build-multi
 
-push: build
-	docker push $(IMAGE)
+.PHONY: push
+push: 	docker push $(IMAGE)
