@@ -1,12 +1,17 @@
 IMAGE ?= ashokpant/python-313-biometrics:latest
 PLATFORMS ?= linux/amd64,linux/arm64
 
-.PHONY:build-multi
-build-multi:
-	DOCKER_BUILDKIT=1 docker buildx build --platform $(PLATFORMS) -t $(IMAGE) .
+.PHONY: build push
 
-.PHONY: build
-build: build-multi
+build:
+	DOCKER_BUILDKIT=1 docker buildx build \
+		--platform $(PLATFORMS) \
+		--tag $(IMAGE) \
+		.
 
-.PHONY: push
-push: 	docker push $(IMAGE)
+push:
+	DOCKER_BUILDKIT=1 docker buildx build \
+		--platform $(PLATFORMS) \
+		--tag $(IMAGE) \
+		--push \
+		.
