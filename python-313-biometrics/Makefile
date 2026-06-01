@@ -1,30 +1,14 @@
-IMAGE_NAME ?= python-313-biometrics
-REGISTRY ?= docker.io
-USERNAME ?= ashokpant
-TAG ?= latest
+IMAGE ?= ashokpant/python-313-biometrics:latest
+BIOMETRICS_PROCESSOR ?= ../../../treeleaf/biometrics-processor
 
-FULL_IMAGE := $(REGISTRY)/$(USERNAME)/$(IMAGE_NAME):$(TAG)
+.PHONY: build push export-requirements
 
-.PHONY: build push release run clean
+export-requirements:
+	$(MAKE) -C "$(BIOMETRICS_PROCESSOR)" export-public-requirements
+	cp "$(BIOMETRICS_PROCESSOR)/requirements-public.txt" ./requirements.txt
 
 build:
-	docker build -t $(FULL_IMAGE) .
+	DOCKER_BUILDKIT=1 docker build -t $(IMAGE) .
 
-push:
-	docker push $(FULL_IMAGE)
-
-release: build push
-
-run:
-	docker run --rm -it $(FULL_IMAGE)
-
-clean:
-	docker rmi $(FULL_IMAGE) || true
-
-update-dependencies:
-	uv lock
-	uv sync
-
-upgrade-dependencies:
-	uv lock --upgrade
-	uv sync
+push: build
+	docker push $(IMAGE)
