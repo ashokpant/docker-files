@@ -1,6 +1,6 @@
 # python-313-biometrics-service
 
-Base Docker image for **biometrics-poc-service** (REST API + BiometricsServiceRpc client).
+Base Docker image for **biometrics service** (REST API + rpc client).
 
 Includes Python 3.13, a prebuilt virtualenv at `/app/.venv`, and runtime libraries for:
 
@@ -9,8 +9,6 @@ Includes Python 3.13, a prebuilt virtualenv at `/app/.venv`, and runtime librari
 - PostgreSQL (SQLAlchemy, psycopg, pgvector)
 - S3 (boto3)
 - OpenCV headless + NumPy (client-side image decode/enhance only)
-
-Does **not** include ML stacks (torch, onnxruntime, nbis, chromadb, etc.) — those belong in `python-313-biometrics-processor`.
 
 ## Build
 
