@@ -11,7 +11,7 @@ flatbuffers==25.12.19
 grpclib==0.4.9
 h11==0.16.0
 h2==4.3.0
-hpack==4.1.0
+hpack==4.2.0
 hyperframe==6.1.0
 idna==3.17
 llvmlite==0.47.0
