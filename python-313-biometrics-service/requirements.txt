@@ -33,7 +33,7 @@ botocore==1.43.29
 s3transfer==0.18.0
 
 requests==2.34.2
-urllib3==2.7.0
+urllib3==2.8.0
 certifi==2026.5.20
 charset-normalizer==3.4.7
 idna==3.18
